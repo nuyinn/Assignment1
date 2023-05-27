@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="nurin.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+* {box-sizing: border-box;}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-image: url(background.jpg);  
+}
+
+@media screen and (max-width: 600px) {
+  .ass .search-container {
+    float: none;
+  }
+  .ass a, .ass input[type=text], .ass .search-container button {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  .ass input[type=text] {
+    border: 1px solid #ccc;  
+  }
+}
+
+</style>
+</head>
+<body>
+
+<div class="ass">
+  <a href="Page1.html">Home</a>
+  <a href="Page2.html" >Delivery</a>
+  <a href="Page3.html">Fresh Mart</a>
+  <a href="Page4.html">Order</a>
+  <a href="Page5.html">About Us</a>
+  <div class="search-container">
+    <form action="/action_page.php">
+      <input type="text" placeholder="Search.." name="search">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+</div>
+
+<div class="ass b">
+  <p><b>BELI-eMart</b></p>
+  <p><i>Welcome To Our Website !</i></p>
+</div>
+
+<center><br><br>
+<class="img">
+  <img src="vegetables.jpg" alt="Vegetables" style="float:center;" style="width:30%;" >
+<br><br>
+
+<div class="form">
+  <p><b>Subscribe to our newsletter</b></p>
+  <p>Get the scoop on new arrivals, special promos and deals!</p>
+  Email : <input type="email" id="email"> <button onclick="submit(event)" id="subscribeButton" style="background-color: rgb(17, 54, 43); color: #ccc;">SUBSCRIBE</button>
+</div>
+</center>
+
+<script>
+  function submit(event){
+  event.preventDefault();
+  let email= document.getElementById("email").value;
+  console.log("Email submitted: ", email);
+  document.getElementById("subscribeButton").innerText = "SUBSCRIBE";
+  document.getElementById("subscribeButton").disabled = true;
+
+  window.location.href = "Page2.html";
+  }
+</script>
+
+<audio controls>
+  <source src="backgroundmusic.mp3" type="audio/mp3">
+Your browser does not support the audio element.
+</audio>
+</body>
+</html>

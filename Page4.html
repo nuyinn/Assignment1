@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="nurin.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+* {box-sizing: border-box;}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-image: url(background.jpg);  
+}
+
+@media screen and (max-width: 600px) {
+  .ass .search-container {
+    float: none;
+  }
+  .ass a, .ass input[type=text], .ass .search-container button {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  .ass input[type=text] {
+    border: 1px solid #ccc;  
+  }
+}
+
+.assF {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 30px;
+    color: darkgreen;
+}
+
+input[type=text], select, textarea {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: #a5d8c5;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+.container2 {
+  border-radius: 5px;
+  background-color: #93c993;
+  padding: 20px;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+.row::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+    padding: 30%;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="ass">
+  <a href="Page1.html">Home</a>
+  <a href="Page2.html">Delivery</a>
+  <a href="Page3.html">Fresh Mart</a>
+  <a href="Page4.html">Order</a>
+  <a href="Page5.html">About Us</a>
+  <div class="search-container">
+    <form action="/action_page.php">
+      <input type="text" placeholder="Search.." name="search">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+</div>
+
+<h2 style="color:darkgreen; font-family: 'Times New Roman', Times, serif;">Order Form</h2>
+
+<div class="container2">
+  <form action="javacript:void(0);">
+    <div>
+      <label for="customerName">Name</label>
+      <input type="text" id="customerName" name="customerName">
+    </div>
+    
+    <div>
+        <label for="phoneNumber">Phone Number</label>
+        <input type="text" id="phoneNumber" name="phoneNumber">
+    </div>
+    
+    <div>
+        <label for="address">Address</label>
+        <input type="text" id="address" name="address">
+    </div>
+    
+    <div>
+      <label for="tomato-quantity">Tomato</label>
+      <input type="text" id="tomatoQuantity" name="tomato-quantity"> /4pcs
+    </div>
+    
+    <div>  
+      <label for="broccoli-quantity">Broccoli</label>
+      <input type="text" id="broccoliQuantity" name="broccoli-quantity"> /pcs (300g)
+    </div>
+    
+    <div>  
+      <label for="lettuce-quantity">Green Coral Lettuce</label>
+      <input type="text" id="lettuceQuantity" name="lettuce-quantity"> /400g
+    </div>
+    
+    <div>  
+      <label for="mushroom-quantity">King Oyster Mushroom</label>
+      <input type="text" id="mushroomQuantity" name="mushroom-quantity"> /200g
+    </div><br>
+    
+    <button onclick="calculate(event)">Order</button><br><br>
+  </form>
+  <div id="result"></div>
+  </div>
+
+    <script>
+      function calculate(event){
+        event.preventDefault();
+
+        var tomatoQuantity= parseInt (document.getElementById("tomatoQuantity").value);
+        var broccoliQuantity= parseInt(document.getElementById("broccoliQuantity").value);
+        var lettuceQuantity= parseInt(document.getElementById("lettuceQuantity").value);
+        var mushroomQuantity= parseInt(document.getElementById("mushroomQuantity").value);
+
+        var tomatoPrice = 4.10;
+        var broccoliPrice = 6.80;
+        var lettucePrice = 8.50;
+        var mushroomPrice = 4.10;
+
+        var total= (tomatoQuantity*tomatoPrice) + (broccoliQuantity*broccoliPrice) + (lettuceQuantity*lettucePrice) + (mushroomQuantity*mushroomPrice);
+
+        var name = document.getElementById ("customerName").value;
+        var phoneNumber = document.getElementById ("phoneNumber").value;
+        var address = document.getElementById ("address").value;
+
+        var orderDetails = "<strong>Order Details</strong><br>" + 
+                          "Tomato: " + tomatoQuantity + "pcs<br>" + 
+                          "Broccoli " + broccoliQuantity + "pcs<br>" +
+                          "Green Coral Lettuce: " + lettuceQuantity + "400g<br>" +
+                          "King Oyster Mushroom: " + mushroomQuantity + "200g<br>";
+
+        var message = "<table>";
+        message += "<tr><td><b>Customer Information</b></td><tr>";
+        message += "<tr><td>Name: </td><td> "+ name + " </td></tr>";
+        message += "<tr><td>Phone Number: </td><td> "+ phoneNumber + " </td></tr>";
+        message += "<tr><td>Address: </td><td> "+ address + " </td></tr><br>";
+        message += "<tr><td><b>Order Details </b></td><td> ";
+        message += "<tr><td>Tomato: </td><td> "+ tomatoQuantity + " (4pcs)</td></tr>";
+        message += "<tr><td>Broccoli: </td><td> "+ broccoliQuantity + " pcs</td></tr>";
+        message += "<tr><td>Green Coral Lettuce: </td><td> "+ lettuceQuantity + " (400g)</td></tr>"; 
+        message += "<tr><td>King Oyster Mushroom: </td><td> "+ mushroomQuantity + " (200g)</td></tr>";
+        message += "<tr><td><b>Total: </b></td><td>RM "+ total.toFixed(2) + " </td></tr>";
+        message += "</table>"
+        
+        document.getElementById("result").innerHTML = message;
+      }
+    </script>
+</body>
+</html>
+
+
